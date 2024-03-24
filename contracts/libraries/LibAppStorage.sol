@@ -8,12 +8,12 @@ library LibAppStorage {
     event Transfer(address indexed _from, address indexed _to, uint256 _amount);
 
 struct Auction {
-    uint id;
-    address bidder;
+    uint auctionId;
+    address creator;
+    uint duration;
     uint tokenId;
     uint startingPrice;
     uint closingPrice;
-    address nftContract;
     uint closeTime;
     bool closed;
 }
@@ -32,13 +32,17 @@ struct ERC20AppStorage {
     string  _name;
     string  _symbol;
     uint8 _decimal;
+
+    uint auctionindex;
+    address nftContract;
     address lastBidder;
+    mapping(uint => Auction) totalAuctions;
 }
 
 function layoutStorage() internal pure returns (ERC20AppStorage storage l) {
-        assembly {
-            l.slot := 0
-        }
+    assembly {
+        l.slot := 0
+    }
 }
 
  function _transferFrom(address _from, address _to, uint256 _amount) internal {
