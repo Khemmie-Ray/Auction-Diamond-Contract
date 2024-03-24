@@ -1,10 +1,11 @@
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: SEE LICENSE IN LICENSE
+pragma solidity ^0.8.20;
 
 import {LibDiamond} from "../libraries/LibDiamond.sol";
 import {LibAppStorage} from "../libraries/LibAppStorage.sol";
 import "../interfaces/IERC721.sol";
 
-contract NewAuctionBidFacet {
+contract AuctionFacet {
     LibAppStorage.ERC20AppStorage internal s;
     event AuctionCreated(bool success);
 
